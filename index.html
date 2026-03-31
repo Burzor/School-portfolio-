@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grange · independent school</title>
+  <!-- Professional fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #2C3E4F;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* typography */
+    h1, h2, h3, .logo, .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: #0F2A41;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #C5A572;
+      margin-top: 0.75rem;
+      border-radius: 4px;
+    }
+
+    /* navigation */
+    .navbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid #EAEEF2;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 85px;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      color: #0F2A41;
+      line-height: 1.2;
+    }
+    .logo span {
+      font-weight: 300;
+      color: #C5A572;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3A4E62;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #C5A572;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #0F2A41;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: absolute;
+        top: 85px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5rem 0;
+        gap: 1.8rem;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.03);
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        border-bottom: 1px solid #EAEEF2;
+      }
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+      .menu-icon {
+        display: block;
+      }
+    }
+
+    /* hero */
+    .hero {
+      background: #F7F9FC;
+      padding: 3.5rem 0 3rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      line-height: 1.2;
+      color: #0F2A41;
+      font-weight: 700;
+    }
+    .hero-content h1 .accent {
+      color: #C5A572;
+      font-style: italic;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin: 1.8rem 0 2.2rem;
+      color: #4B637A;
+      font-weight: 300;
+    }
+    .btn {
+      background: #0F2A41;
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+      border: 1px solid #0F2A41;
+    }
+    .btn:hover {
+      background: #C5A572;
+      border-color: #C5A572;
+      color: #0F2A41;
+    }
+    .hero-image {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.2);
+    }
+
+    /* stats */
+    .stats-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0 4rem;
+      padding: 2rem 0;
+      border-top: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .stat-item {
+      flex: 1 1 160px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #C5A572;
+      line-height: 1.2;
+    }
+    .stat-label {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+      color: #5B748D;
+    }
+
+    /* school stages */
+    .stages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .stage-card {
+      background: #FFFFFF;
+      border: 1px solid #E6ECF3;
+      padding: 2.5rem 2rem;
+      transition: all 0.2s;
+    }
+    .stage-card:hover {
+      border-color: #C5A572;
+      box-shadow: 0 15px 30px -10px rgba(15,42,65,0.08);
+    }
+    .stage-icon {
+      font-size: 2.5rem;
+      color: #C5A572;
+      margin-bottom: 1.5rem;
+    }
+    .stage-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #0F2A41;
+      margin-bottom: 0.5rem;
+    }
+    .stage-age {
+      color: #6A7F98;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+    }
+    .stage-features {
+      list-style: none;
+    }
+    .stage-features li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: #3E556C;
+    }
+    .stage-features i {
+      color: #C5A572;
+      width: 18px;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    /* philosophy */
+    .philosophy {
+      background: #F7F9FC;
+      padding: 4rem 0;
+      margin: 3rem 0;
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+    .philosophy-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #0F2A41;
+      margin-bottom: 1rem;
+    }
+    .philosophy-item p {
+      color: #546E88;
+    }
+
+    /* facilities */
+    .facilities {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+    .facility {
+      border: 1px solid #EDF2F7;
+      padding: 1.5rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .facility i {
+      font-size: 2rem;
+      color: #C5A572;
+      margin-bottom: 1rem;
+    }
+    .facility span {
+      font-weight: 500;
+      color: #2C4A6A;
+    }
+
+    /* testimonials carousel */
+    .testimonials-section {
+      margin: 4rem 0 2rem;
+    }
+    .testimonials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+    .testimonials-header .section-title {
+      margin-bottom: 0;
+    }
+    .testimonials-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: #C5A572 #E6ECF3;
+      cursor: grab;
+      scroll-behavior: smooth;
+    }
+    .testimonials-carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+    .testimonials-carousel::-webkit-scrollbar-track {
+      background: #E6ECF3;
+    }
+    .testimonials-carousel::-webkit-scrollbar-thumb {
+      background: #C5A572;
+      border-radius: 8px;
+    }
+    .testimonials-carousel:active {
+      cursor: grabbing;
+    }
+    .testimonial-card {
+      flex: 0 0 380px;
+      scroll-snap-align: start;
+      background: #FFFFFF;
+      border-left: 4px solid #C5A572;
+      padding: 2rem 2rem;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.02);
+      border-radius: 0 8px 8px 0;
+      transition: box-shadow 0.2s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 15px 30px -8px rgba(15,42,65,0.12);
+    }
+    .testimonial-card p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #2F4865;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: #0F2A41;
+      letter-spacing: 0.3px;
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: #7C8FA5;
+      margin-top: 0.2rem;
+    }
+
+    /* contact */
+    .contact-bar {
+      background: #0F2A41;
+      color: white;
+      padding: 3rem 2rem;
+      margin: 4rem 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-bar h2 {
+      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+    .contact-bar .btn-light {
+      background: transparent;
+      border: 2px solid #C5A572;
+      color: #C5A572;
+      padding: 1rem 3rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .contact-bar .btn-light:hover {
+      background: #C5A572;
+      color: #0F2A41;
+      border-color: #C5A572;
+    }
+
+    /* footer */
+    .footer {
+      background: #132433;
+      color: #A8BCCF;
+      padding: 3rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-col p {
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col a {
+      color: #C5A572;
+      text-decoration: none;
+    }
+    .footer-bottom {
+      border-top: 1px solid #203A50;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* ========== ENTRANCE ANIMATIONS (toggle on scroll) ========== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      will-change: opacity, transform;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .stages-grid { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .facilities { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .testimonial-card { flex: 0 0 320px; }
+    }
+    @media (max-width: 600px) {
+      .facilities { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .testimonial-card { flex: 0 0 280px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">The Grange <span>· est. 1987</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#nursery">Nursery</a></li>
+        <li><a href="#primary">Primary</a></li>
+        <li><a href="#secondary">Secondary</a></li>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#contact">Visit</a></li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Confidence, curiosity, <span class="accent">character</span> — from nursery to graduation.</h1>
+        <p>A coherent journey through early years, primary, and secondary. Small classes, exceptional teachers, and a tradition of excellence.</p>
+        <a href="#contact" class="btn">Request prospectus</a>
+      </div>
+      <div class="hero-image-wrapper">
+        <!-- Lazy loaded image: native + Intersection Observer fallback -->
+        <img class="hero-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23A7B9C9'/%3E%3Ctext x='80' y='160' font-family='Georgia' font-size='22' fill='%233f5569'%3ELoading...%3C/text%3E%3C/svg%3E" 
+             data-src="https://picsum.photos/id/20/800/600" 
+             alt="The Grange school building" 
+             loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- quick stats -->
+  <div class="container animate-on-scroll" id="statsSection">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">135</div><div class="stat-label">pupils</div></div>
+      <div class="stat-item"><div class="stat-number">1:7</div><div class="stat-label">teacher ratio</div></div>
+      <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">extracurriculars</div></div>
+      <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">first-choice uni</div></div>
+    </div>
+  </div>
+
+  <!-- nursery, primary, secondary cards -->
+  <div class="container animate-on-scroll" id="nursery">
+    <div class="section-title">Our stages</div>
+    <div class="stages-grid">
+      <div class="stage-card">
+        <div class="stage-icon"><i class="fa-regular fa-compass"></i></div>
+        <div class="stage-name">Nursery</div>
+        <div class="stage-age">ages 3–5 · early years</div>
+        <ul class="stage-features">
+          <li><i class="fa-regular fa-star"></i> Play‑based exploration</li>
+          <li><i class="fa-regular fa-heart"></i> Emotional & social foundation</li>
+          <li><i class="fa-regular fa-leaf"></i> Forest school sessions</li>
+          <li><i class="fa-regular fa-book-open"></i> Early literacy & numeracy</li>
+        </ul>
+      </div>
+      <div id="primary" class="stage-card">
+        <div class="stage-icon"><i class="fa-regular fa-pen-to-square"></i></div>
+        <div class="stage-name">Primary</div>
+        <div class="stage-age">ages 6–11 · preparatory</div>
+        <ul class="stage-features">
+          <li><i class="fa-regular fa-cube"></i> Inquiry‑based curriculum</li>
+          <li><i class="fa-regular fa-flag"></i> Specialist music, art, PE</li>
+          <li><i class="fa-regular fa-people-group"></i> Character & leadership</li>
+          <li><i class="fa-regular fa-laptop"></i> Digital literacy integrated</li>
+        </ul>
+      </div>
+      <div id="secondary" class="stage-card">
+        <div class="stage-icon"><i class="fa-regular fa-gem"></i></div>
+        <div class="stage-name">Secondary</div>
+        <div class="stage-age">ages 12–18 · senior</div>
+        <ul class="stage-features">
+          <li><i class="fa-regular fa-flask"></i> Sciences & research</li>
+          <li><i class="fa-regular fa-globe"></i> Global perspectives & languages</li>
+          <li><i class="fa-regular fa-briefcase"></i> Internships & service</li>
+          <li><i class="fa-regular fa-scroll"></i> University guidance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- philosophy (approach) -->
+  <div id="philosophy" class="philosophy animate-on-scroll">
+    <div class="container">
+      <div class="section-title">Educational philosophy</div>
+      <div class="philosophy-grid">
+        <div class="philosophy-item">
+          <h3>Nurture</h3>
+          <p>We believe children flourish when they feel known. Small classes and a strong pastoral system ensure every pupil is supported.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>Scholarship</h3>
+          <p>A broad, rigorous academic programme that fosters deep understanding, critical thinking, and a lifelong love of learning.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>Community</h3>
+          <p>Partnership with families is central. We encourage service, teamwork, and respect — preparing pupils for a connected world.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- facilities -->
+  <div class="container animate-on-scroll">
+    <div class="section-title">Campus & facilities</div>
+    <div class="facilities">
+      <div class="facility"><i class="fa-regular fa-building-columns"></i><br><span>Library</span></div>
+      <div class="facility"><i class="fa-regular fa-futbol"></i><br><span>Sports hall</span></div>
+      <div class="facility"><i class="fa-regular fa-microscope"></i><br><span>Science labs</span></div>
+      <div class="facility"><i class="fa-regular fa-tree"></i><br><span>Forest area</span></div>
+      <div class="facility"><i class="fa-regular fa-paintbrush"></i><br><span>Art studio</span></div>
+      <div class="facility"><i class="fa-regular fa-music"></i><br><span>Music school</span></div>
+      <div class="facility"><i class="fa-regular fa-utensils"></i><br><span>Dining hall</span></div>
+      <div class="facility"><i class="fa-regular fa-computer"></i><br><span>Design lab</span></div>
+    </div>
+  </div>
+
+  <!-- testimonial carousel -->
+  <div class="testimonials-section container animate-on-scroll">
+    <div class="testimonials-header">
+      <h2 class="section-title">What families say</h2>
+    </div>
+    <div class="testimonials-carousel" id="testimonialsCarousel">
+      <div class="testimonial-card">
+        <p>“The Grange has given our daughter the confidence to try anything. The continuity from nursery to secondary means the teachers truly know her — it feels like one big family.”</p>
+        <div class="testimonial-author">— Lucy Cavendish</div>
+        <div class="testimonial-role">parent of Year 9 pupil</div>
+      </div>
+      <div class="testimonial-card">
+        <p>“Our son joined in Year 3 and was warmly welcomed. The small classes and individual attention helped him flourish academically and socially.”</p>
+        <div class="testimonial-author">— Mark Redwood</div>
+        <div class="testimonial-role">parent of Year 7 pupil</div>
+      </div>
+      <div class="testimonial-card">
+        <p>“The forest school in nursery was magical. Our child developed resilience and a love for nature that has stayed with her through primary.”</p>
+        <div class="testimonial-author">— Sophie Grant</div>
+        <div class="testimonial-role">parent of Year 2 pupil</div>
+      </div>
+      <div class="testimonial-card">
+        <p>“As a teacher myself, I am impressed by the depth of the secondary curriculum. The university guidance is exceptional and personal.”</p>
+        <div class="testimonial-author">— Dr. Alistair Finch</div>
+        <div class="testimonial-role">parent of Year 12 pupil</div>
+      </div>
+      <div class="testimonial-card">
+        <p>“My two children have different learning styles, yet both have thrived here. The school adapts to the child, not the other way around.”</p>
+        <div class="testimonial-author">— Elena Voss</div>
+        <div class="testimonial-role">parent of Year 5 & Year 8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- contact / visit -->
+  <div class="container animate-on-scroll" id="contact">
+    <div class="contact-bar">
+      <h2>We welcome your visit</h2>
+      <a href="#" class="btn-light">Book a tour</a>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer animate-on-scroll">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color:white; font-size:1.8rem;">The Grange</div>
+          <p>123 High Street,<br>Winchester, SO23 9AP<br>United Kingdom</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>+44 (0)1962 845 300</li>
+            <li><a href="mailto:admissions@grange.org.uk">admissions@grange.org.uk</a></li>
+            <li>Office hours: 8am–4pm</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#nursery">Nursery</a></li>
+            <li><a href="#primary">Primary</a></li>
+            <li><a href="#secondary">Secondary</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="#"><i class="fa-regular fa-envelope"></i> Newsletter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 The Grange School. All rights reserved.</span>
+        <span>Registered charity no. 1123456</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navLinks.classList.toggle('active');
+        });
+      }
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || href === "") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const headerOffset = 90;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          }
+        });
+      });
+
+      // ----- LAZY LOADING (Intersection Observer) -----
+      const lazyImages = document.querySelectorAll('img[data-src]');
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            observer.unobserve(img);
+          }
+        });
+      }, { rootMargin: '200px' });
+      lazyImages.forEach(img => imageObserver.observe(img));
+
+      // ----- ENTRANCE ANIMATIONS (toggle on scroll, both directions) -----
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -20px 0px' }); // small offset to reduce edge flicker
+      animatedElements.forEach(el => animationObserver.observe(el));
+
+      // ----- TESTIMONIAL AUTO-SCROLL CAROUSEL (unchanged) -----
+      const carousel = document.getElementById('testimonialsCarousel');
+      if (carousel) {
+        let autoScrollInterval;
+        const scrollIntervalTime = 5000;
+        let pauseTimeout = null;
+
+        function scrollToNext() {
+          if (!carousel) return;
+          const cardWidth = carousel.querySelector('.testimonial-card')?.offsetWidth || 380;
+          const currentScroll = carousel.scrollLeft;
+          const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+          if (currentScroll + cardWidth >= maxScroll - 5) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+          }
+        }
+
+        function startAutoScroll() {
+          if (autoScrollInterval) clearInterval(autoScrollInterval);
+          autoScrollInterval = setInterval(scrollToNext, scrollIntervalTime);
+        }
+
+        function pauseAutoScroll() {
+          if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+          }
+          if (pauseTimeout) clearTimeout(pauseTimeout);
+          pauseTimeout = setTimeout(() => {
+            startAutoScroll();
+            pauseTimeout = null;
+          }, 10000);
+        }
+
+        carousel.addEventListener('scroll', () => pauseAutoScroll());
+        carousel.addEventListener('mousedown', () => pauseAutoScroll());
+        carousel.addEventListener('touchstart', () => pauseAutoScroll());
+        carousel.addEventListener('mouseleave', () => {
+          if (pauseTimeout) {
+            clearTimeout(pauseTimeout);
+            pauseTimeout = null;
+          }
+          if (!autoScrollInterval) startAutoScroll();
+        });
+
+        startAutoScroll();
+      }
+    })();
+  </script>
+</body>
+</html>
