@@ -1,0 +1,12 @@
+{
+  "name": "school-portfolio",
+  "version": "1.0.0",
+  "description": "Backend for The Grange school portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
